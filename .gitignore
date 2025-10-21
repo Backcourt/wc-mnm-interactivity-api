@@ -5,6 +5,7 @@ deploy/
 languages/
 node_modules/
 packages/
+!packages/.gitkeep
 vendor/
 bookmarks.json
 composer.lock
