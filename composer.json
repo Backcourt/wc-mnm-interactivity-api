@@ -57,7 +57,7 @@
 			"@prefix-namespaces"
 		],
 		"post-autoload-dump": [
-			"@php bin/strauss.phar include-autoloader"
+			"test -f bin/strauss.phar && php bin/strauss.phar include-autoloader || true"
 		]
 	},
 	"config": {
