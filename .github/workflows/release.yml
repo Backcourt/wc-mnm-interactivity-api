@@ -125,13 +125,7 @@ jobs:
                   echo ${{ env.release_tag }}
                   echo ${{ env.release_status }}
 
-            - name: 'Build release: Pre-release'
-              if: ${{ env.release_status == 'pre-release' }}
-              run: |
-                  npm run betarelease
-
             - name: 'Build release: Stable'
-              if: ${{ env.release_status != 'pre-release' }}
               run: |
                   npm run release
 
