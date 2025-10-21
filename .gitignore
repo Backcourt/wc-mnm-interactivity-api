@@ -1,0 +1,13 @@
+bak/
+bin/strauss.phar
+build/
+deploy/
+languages/
+node_modules/
+packages/
+vendor/
+bookmarks.json
+composer.lock
+package-lock.json
+*.bak
+

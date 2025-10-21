@@ -1,0 +1,32 @@
+{
+	"name": "wc-mix-and-match/add-to-cart-child-item-quantity-selector",
+	"version": "1.0.0",
+	"title": "Mix and Match Child Product Quantity Selector (Experimental)",
+	"description": "Display an input field to select the number of products to add to mix and match pack.",
+	"category": "woocommerce-product-elements",
+	"attributes": {
+		"quantitySelectorStyle": {
+			"type": "string",
+			"enum": [ "input", "stepper" ],
+			"default": "input"
+		},
+		"textAlign": {
+			"type": "string",
+			"enum": [ "left", "center", "right" ],
+			"default": "center"
+		}
+	},
+	"supports": {
+		"interactivity": true
+	},
+	"keywords": [ "WooCommerce" ],
+	"textdomain": "wc-mmn-interactivity-api",
+	"usesContext": [ "postId", "wc-mix-and-match/containerId" ],
+	"ancestor": [ "wc-mix-and-match/add-to-cart-child-item-template" ],
+	"apiVersion": 3,
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"render": "file:./render.php",
+	"viewStyle": [
+		"woocommerce-add-to-cart-with-options-quantity-selector-style"
+	]
+}

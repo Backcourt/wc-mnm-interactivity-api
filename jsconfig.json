@@ -1,0 +1,9 @@
+{
+	"compilerOptions": {
+		"baseUrl": "src-bakup",
+		"paths": {
+			"@*": [ "*" ]
+		}
+	},
+	"exclude": [ "node_modules", "build", "deploy" ]
+}

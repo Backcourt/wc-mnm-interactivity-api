@@ -1,0 +1,18 @@
+{
+	"name": "wc-mix-and-match/add-to-cart-status-ui",
+	"title": "Mix and Match configuration status (Experimental)",
+	"description": "Displays the current configuration status of the Mix and Match product.",
+	"category": "woocommerce",
+	"keywords": [ "WooCommerce" ],
+	"ancestor": [ "wc-mix-and-match/add-to-cart" ],
+	"usesContext": [ "postId", "wc-mix-and-match/containerId" ],
+	"supports": {
+		"interactivity": true
+	},
+	"textdomain": "wc-mmn-interactivity-api",
+	"apiVersion": 3,
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"viewScriptModule": "file:./view.js",
+	"style": "file:./style-view.css",
+	"render": "file:./render.php"
+}

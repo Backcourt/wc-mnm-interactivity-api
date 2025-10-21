@@ -1,0 +1,21 @@
+{
+	"name": "wc-mix-and-match/add-to-cart-child-item-template",
+	"title": "Mix and Match Child Items Selector (Experimental)",
+	"description": "A list item template that represents a child product within the Mix and Match Child Items block.",
+	"category": "woocommerce",
+	"keywords": [ "WooCommerce" ],
+	"ancestor": [ "wc-mix-and-match/add-to-cart-child-items" ],
+	"usesContext": [
+		"displayLayout",
+		"postId",
+		"wc-mix-and-match/containerId"
+	],
+	"supports": {
+		"interactivity": true
+	},
+	"textdomain": "wc-mmn-interactivity-api",
+	"apiVersion": 3,
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"render": "file:./render.php",
+	"viewStyle": [ "woocommerce-product-template-style" ]
+}

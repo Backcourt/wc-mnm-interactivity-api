@@ -1,0 +1,8 @@
+bak/*
+bak/**/*
+build/
+dist/
+node_modules/
+vendor/
+packages/
+*.min.js

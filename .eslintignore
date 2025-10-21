@@ -1,0 +1,9 @@
+# .eslintignore - will stop working when Wordpress/Scripts bundles ESLint 9.
+bak/*
+bak/**/*
+build/
+dist/
+node_modules/
+vendor/
+packages/
+*.min.js

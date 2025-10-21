@@ -1,0 +1,36 @@
+{
+	"name": "wc-mix-and-match/add-to-cart",
+	"title": "Mix and Match Add to Cart (Experimental)",
+	"description": "Display all mix and match blocks for the add to cart with options block.",
+	"category": "woocommerce",
+	"keywords": [ "WooCommerce" ],
+	"attributes": {
+		"productId": { "type": "number", "default": 0 },
+		"isDescendentOfQueryLoop": { "type": "boolean", "default": false },
+		"textAlign": { "type": "string", "default": "" },
+		"isDescendentOfSingleProductTemplate": {
+			"type": "boolean",
+			"default": false
+		},
+		"isDescendentOfSingleProductBlock": {
+			"type": "boolean",
+			"default": false
+		},
+		"displayLayout": {
+			"type": "object"
+		}
+	},
+	"supports": {
+		"interactivity": true
+	},
+	"providesContext": {
+		"displayLayout": "displayLayout"
+	},
+	"ancestor": [ "woocommerce/add-to-cart-with-options" ],
+	"usesContext": [ "wc-mix-and-match/containerId" ],
+	"textdomain": "woocommerce-mix-and-match-products",
+	"apiVersion": 3,
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"viewScriptModule": "file:./view.js",
+	"render": "file:./render.php"
+}
