@@ -36,6 +36,7 @@ rsync -a --delete \
   --include='includes/***' \
   --include='languages/***' \
   --include='packages/***' \
+  --include='src/***' \
   --include='templates/***' \
   --include='readme.txt' \
   --include="${PLUGIN_SLUG}.php" \
