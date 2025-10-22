@@ -50,7 +50,7 @@ try {
 }
 
 // Load the template helper functions.
-require_once __DIR__ . '/template-functions.php';
+require_once __DIR__ . '/includes/template-functions.php';
 
 /**
  * Begins execution of the plugin.
