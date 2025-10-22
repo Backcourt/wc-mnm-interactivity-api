@@ -1,21 +1,24 @@
 #!/bin/bash
 set -e
-
 # Absolute path to this script
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
 # Absolute path to plugin root
 PLUGIN_DIR="$(dirname "$SCRIPT_DIR")"
-
 # Plugin slug (directory name)
 PLUGIN_SLUG="$(basename "$PLUGIN_DIR")"
+# Get version from package.json
+PLUGIN_VERSION=$(node -p "require('$PLUGIN_DIR/package.json').version")
+# Compile directory
+COMPILE_DIR="$PLUGIN_DIR/compile"
+# Deploy directory
+DEPLOY_DIR="$PLUGIN_DIR/deploy"
 
-# Distribution directory
-DIST_DIR="$PLUGIN_DIR/dist"
+echo "🧹 Cleaning up old compile..."
+rm -rf "$COMPILE_DIR"
+mkdir "$COMPILE_DIR"
 
-echo "🧹 Cleaning up old dist..."
-rm -rf "$DIST_DIR"
-mkdir "$DIST_DIR"
+echo "📁 Creating deploy directory..."
+mkdir -p "$DEPLOY_DIR"
 
 cd "$PLUGIN_DIR"
 
@@ -27,41 +30,31 @@ npm install
 npm run build
 composer run makepot
 
-echo "🧬 Copying plugin files to dist directory..."
+echo "🧬 Copying plugin files to compile directory..."
 rsync -a --delete \
   --include='build/***' \
   --include='includes/***' \
   --include='languages/***' \
+  --include='packages/***' \
   --include='templates/***' \
-  --include='vendor/***' \
   --include='readme.txt' \
-  --include='composer.json' \
   --include="${PLUGIN_SLUG}.php" \
+  --exclude='.bak' \
+  --exclude='.gitkeep' \
+  --exclude='composer.json' \
   --exclude='*' \
-  ./ "$DIST_DIR"
+  ./ "$COMPILE_DIR"
 
-echo "✂️ Installing production Composer dependencies only..."
-(
-	cd "$DIST_DIR"
-	composer install --no-dev --optimize-autoloader --no-interaction
-    # Remove composer.json when finished.
-    rm -f composer.json composer.lock
-)
-
-echo "🗜 Zipping plugin from dist/ with top-level folder named $PLUGIN_SLUG..."
-
+echo "🗜 Zipping plugin from compile/ with version $PLUGIN_VERSION..."
 cd "$PLUGIN_DIR"
-
-# Remove existing zip if present
-rm -f "${PLUGIN_SLUG}.zip"
-
-# Rename dist to plugin slug
-mv dist "$PLUGIN_SLUG"
-
+# Rename compile to plugin slug
+mv compile "$PLUGIN_SLUG"
 # Zip the renamed folder
-zip -r "${PLUGIN_SLUG}.zip" "$PLUGIN_SLUG"
+zip -r "${PLUGIN_SLUG}-${PLUGIN_VERSION}.zip" "$PLUGIN_SLUG"
+# Clean up renamed folder
+rm -rf "$PLUGIN_SLUG"
 
-# Rename it back to dist
-mv "$PLUGIN_SLUG" dist
+echo "📦 Moving zip to deploy folder..."
+mv "${PLUGIN_SLUG}-${PLUGIN_VERSION}.zip" "$DEPLOY_DIR/"
 
-echo "✅ Build complete. ZIP created for $PLUGIN_SLUG."
+echo "✅ Build complete. ZIP created: deploy/${PLUGIN_SLUG}-${PLUGIN_VERSION}.zip"
