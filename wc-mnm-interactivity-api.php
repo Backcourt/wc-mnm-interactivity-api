@@ -40,7 +40,7 @@ define( 'WC_MNM_INTERACTIVITY_API_MANIFEST_FILE', __DIR__ . '/build/blocks-manif
 
 // If the GitHub repo was installed without running `composer install` to add the dependencies, the autoload will fail.
 try {
-	require_once __DIR__ . '/vendor/autoload.php';
+	require_once __DIR__ . '/packages/autoload.php';
 } catch ( Throwable $error ) {
 	$display_error_notice = function () {
 		echo '<div class="notice notice-error"><p><b>WC Mix and Match - Interactivity API error: Required dependencies are not installed.</b> Please run <code>composer install</code> in the plugin directory.</p></div>';
