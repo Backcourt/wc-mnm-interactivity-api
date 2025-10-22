@@ -62,24 +62,3 @@ require_once __DIR__ . '/includes/template-functions.php';
  * @since    1.0.0
  */
 Plugin::get_instance()->run();
-
-
-/*
-function debug_block_styles() {
-    $registry = WP_Block_Type_Registry::get_instance();
-    $block = $registry->get_registered( 'woocommerce/product-template' );
-    
-    if ( $block ) {
-        error_log( print_r( $block->style, true ) );
-        error_log( print_r( $block->view_style, true ) );
-    }
-}
-add_action( 'init', 'debug_block_styles', 999 );
-
-
-add_action( 'wp_footer', function() {
-    global $wp_scripts;
-    error_log( 'Registered scripts: ' . print_r( array_keys( $wp_scripts->registered ), true ) );
-    error_log( 'Enqueued scripts: ' . print_r( $wp_scripts->queue, true ) );
-}, 999 );
-*/
