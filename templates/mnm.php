@@ -55,7 +55,7 @@
 			<!-- wp:group {"layout":{"type":"flex","orientation":"vertical","justifyContent":"center","flexWrap":"wrap"}} -->
 			<div class="wp-block-group">
 				<!-- wp:paragraph {"fontSize":"medium"} -->
-				<p class="has-medium-font-size"><?php esc_html_x( 'This product is currently unavailable.', '[Frontend]', 'wc-mnm-interactivity-api' ); ?></p>
+				<p class="has-medium-font-size"><?php echo esc_html_x( 'This product is currently unavailable.', '[Frontend]', 'wc-mnm-interactivity-api' ); ?></p>
 				<!-- /wp:paragraph -->
 
 			</div>
